@@ -5,6 +5,7 @@ export var flap_strength: float = 600.0
 export var max_fall_speed: float = 2000.0
 
 var velocity: Vector2 = Vector2.ZERO
+var Gift := preload("res://Gift.tscn")
 
 func _ready() -> void:
 	pass
@@ -21,10 +22,18 @@ func _physics_process(delta: float) -> void:
 		# Apply a negative velocity to make the bird move upwards
 		velocity.y = -flap_strength
 	
+	# Check if the player is dropping a gift
+	if Input.is_action_just_pressed("ui_down"):
+		drop_gift()
+	
 	# Move the bird
 	move_and_slide(velocity, Vector2.UP)
 
-
+func drop_gift() -> void:
+	var main := get_tree().current_scene
+	var gift := Gift.instance()
+	main.add_child(gift)
+	gift.global_position = global_position + Vector2(0, 100) 
 
 
 
