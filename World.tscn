@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Aseprite/BackgroundPlaceHolder.png" type="Texture" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ObstacleSpawner.tscn" type="PackedScene" id=3]
 [ext_resource path="res://HouseSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World.gd" type="Script" id=5]
+[ext_resource path="res://HUD/kenneyUI-green.tres" type="Theme" id=6]
 
 [node name="World" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -19,3 +22,21 @@ position = Vector2( 896, 128 )
 
 [node name="HouseSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 960, 1089 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -27.0
+margin_right = 27.0
+margin_bottom = 40.0
+rect_scale = Vector2( 2, 2 )
+theme = ExtResource( 6 )
+custom_constants/margin_top = 50
+
+[node name="HighScore" type="Label" parent="CanvasLayer/MarginContainer"]
+margin_top = 50.0
+margin_right = 54.0
+margin_bottom = 86.0
+theme = ExtResource( 6 )

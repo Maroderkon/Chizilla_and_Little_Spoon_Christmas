@@ -4,11 +4,16 @@ export var gravity: float = 1600.0
 export var flap_strength: float = 600.0
 export var max_fall_speed: float = 2000.0
 
+signal player_dead
+
+onready var hitbox_area := $Hitbox
+
 var velocity: Vector2 = Vector2.ZERO
 var Gift := preload("res://Gift.tscn")
 
+
 func _ready() -> void:
-	pass
+	hitbox_area.connect("area_entered", self, "hitbox_area_entered")
 
 func _physics_process(delta: float) -> void:
 	# Apply gravity to the bird's vertical velocity
@@ -35,7 +40,12 @@ func drop_gift() -> void:
 	main.add_child(gift)
 	gift.global_position = global_position + Vector2(0, 100) 
 
-
+func hitbox_area_entered(area: Area2D) -> void:
+	player_died()
+	
+func player_died() -> void:
+	emit_signal("player_dead")
+	queue_free()
 
 
 
