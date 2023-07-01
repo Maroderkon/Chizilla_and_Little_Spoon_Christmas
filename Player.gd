@@ -10,12 +10,14 @@ onready var hitbox_area := $Hitbox
 
 var velocity: Vector2 = Vector2.ZERO
 var Gift := preload("res://Gift.tscn")
+var game_started := false
 
 
 func _ready() -> void:
 	hitbox_area.connect("area_entered", self, "hitbox_area_entered")
 
 func _physics_process(delta: float) -> void:
+	
 	# Apply gravity to the bird's vertical velocity
 	velocity.y += gravity * delta
 	
@@ -34,6 +36,15 @@ func _physics_process(delta: float) -> void:
 	# Move the bird
 	move_and_slide(velocity, Vector2.UP)
 
+func _input(event):
+	if event is InputEventScreenTouch and event.pressed:
+		if event.position.x < get_viewport().size.x * 0.5:
+			# The left side of the screen was touched
+			velocity.y = -flap_strength
+		else:
+			# The right side of the screen was touched
+			drop_gift()
+
 func drop_gift() -> void:
 	var main := get_tree().current_scene
 	var gift := Gift.instance()
@@ -47,7 +58,8 @@ func player_died() -> void:
 	emit_signal("player_dead")
 	queue_free()
 
-
+func game_start():
+	game_started = true
 
 
 

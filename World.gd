@@ -3,6 +3,8 @@ extends Node2D
 
 onready var player := $Player
 onready var canvas := $CanvasLayer
+onready var obstacle_spawner := $ObstacleSpawner
+onready var house_spawner := $HouseSpawner
 
 var Menu := preload("res://Menu.tscn")
 var score := 0
@@ -19,8 +21,11 @@ func add_menu_screen() -> void:
 	var main := canvas
 	var menu := Menu.instance()
 	main.add_child(menu)
+	menu.set_score(score)
 	
 func score_up() -> void:
-	print("score up method called")
 	score += 1
 	highscore.text = str(score)
+	
+func start_game() -> void:
+	pass

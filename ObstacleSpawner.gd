@@ -32,3 +32,6 @@ func spawn_obstacle():
 	
 func on_spawn_timer_timeout():
 	spawn_obstacle()
+	
+func game_start():
+	spawn_timer.start(2)

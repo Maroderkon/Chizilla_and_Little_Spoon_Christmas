@@ -9,6 +9,7 @@ func _ready() -> void:
 	randomize()
 	spawn_timer.connect("timeout", self, "on_spawn_timer_timeout")
 	spawn_timer.start(7)
+	
 
 func _process(delta: float) -> void:
 	pass
@@ -26,7 +27,7 @@ func spawn_obstacle():
 	# Connect the house signal to the World node method immediately after instantiation
 	
 	house.connect("score_up", main, "score_up")
-	print("Signal connected: ", house.is_connected("score_up", main, "score_up"))
+	
 	
 	
 	# Adding the house to the main node after connecting the signal
@@ -35,6 +36,10 @@ func spawn_obstacle():
 	
 func on_spawn_timer_timeout():
 	spawn_obstacle()
+	
+
+func game_start():
+	spawn_timer.start(7)
 
 #extends Node2D
 #

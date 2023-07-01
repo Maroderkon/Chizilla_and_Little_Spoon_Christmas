@@ -19,4 +19,4 @@ func _process(delta: float) -> void:
 func on_gift_area_entered(area: Area2D):
 	area.queue_free()
 	emit_signal("score_up")
-	print("gift collided with house")
+	
