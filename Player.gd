@@ -7,14 +7,17 @@ export var max_fall_speed: float = 2000.0
 signal player_dead
 
 onready var hitbox_area := $Hitbox
+onready var cooldown_timer := $CoolDownTimer
 
 var velocity: Vector2 = Vector2.ZERO
 var Gift := preload("res://Gift.tscn")
 var game_started := false
+var cooldown_over := true
 
 
 func _ready() -> void:
 	hitbox_area.connect("area_entered", self, "hitbox_area_entered")
+	cooldown_timer.connect("timeout", self, "on_cooldown_timer_timeout")
 
 func _physics_process(delta: float) -> void:
 	
@@ -46,10 +49,13 @@ func _input(event):
 			drop_gift()
 
 func drop_gift() -> void:
-	var main := get_tree().current_scene
-	var gift := Gift.instance()
-	main.add_child(gift)
-	gift.global_position = global_position + Vector2(0, 100) 
+	if cooldown_over == true:
+		var main := get_tree().current_scene
+		var gift := Gift.instance()
+		main.add_child(gift)
+		gift.global_position = global_position + Vector2(0, 100) 
+		cooldown_over = false
+		cooldown_timer.start(1)
 
 func hitbox_area_entered(area: Area2D) -> void:
 	player_died()
@@ -61,6 +67,8 @@ func player_died() -> void:
 func game_start():
 	game_started = true
 
+func on_cooldown_timer_timeout() -> void:
+	cooldown_over = true
 
 
 #extends KinematicBody2D
