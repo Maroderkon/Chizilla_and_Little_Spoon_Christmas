@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Short Bells.wav-5dac16d10b6d0322fd0c2392cdf5ed05.sample"
+
+[deps]
+
+source_file="res://Sounds/Short Bells.wav"
+dest_files=[ "res://.import/Short Bells.wav-5dac16d10b6d0322fd0c2392cdf5ed05.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

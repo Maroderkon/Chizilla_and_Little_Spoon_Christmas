@@ -24,6 +24,10 @@ config/name="Chizilla and Little Spoon A Christmas Adventure"
 run/main_scene="res://StartScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameMusic="*res://GameMusic.tscn"
+
 [display]
 
 window/size/width=720

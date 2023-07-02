@@ -2,6 +2,7 @@ extends Area2D
 
 
 const SPEED := 300
+var speed := rand_range(250.0, 500.0)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,4 +12,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	global_position.x -= SPEED * delta
+	global_position.x -= speed * delta

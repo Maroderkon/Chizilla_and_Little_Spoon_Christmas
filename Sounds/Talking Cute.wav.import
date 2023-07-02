@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Talking Cute.wav-842722098ab19a0d2334c673188db6ed.sample"
+
+[deps]
+
+source_file="res://Sounds/Talking Cute.wav"
+dest_files=[ "res://.import/Talking Cute.wav-842722098ab19a0d2334c673188db6ed.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

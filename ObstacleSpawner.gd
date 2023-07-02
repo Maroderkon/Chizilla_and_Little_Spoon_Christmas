@@ -30,7 +30,7 @@ func spawn_obstacle():
 	plane.global_position = spawn_position
 	
 func on_difficulty_timer_timeout() -> void:
-	if difficulty_spawn_rate >= 0.6:
+	if difficulty_spawn_rate > 0.6:
 		difficulty_spawn_rate -= 0.2
 	
 	# Here, you stop and then start the timer again with the new value

@@ -8,6 +8,7 @@ signal player_dead
 
 onready var hitbox_area := $Hitbox
 onready var cooldown_timer := $CoolDownTimer
+onready var bell_sound := $BellSound
 
 var velocity: Vector2 = Vector2.ZERO
 var Gift := preload("res://Gift.tscn")
@@ -31,6 +32,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_up"):
 		# Apply a negative velocity to make the bird move upwards
 		velocity.y = -flap_strength
+		play_bell_sound()
 	
 	# Check if the player is dropping a gift
 	if Input.is_action_just_pressed("ui_down"):
@@ -70,6 +72,9 @@ func game_start():
 func on_cooldown_timer_timeout() -> void:
 	cooldown_over = true
 
+func play_bell_sound() -> void:
+	bell_sound.stop()
+	bell_sound.play(0.0) # Play the sound but stop it at 2 seconds
 
 #extends KinematicBody2D
 #
