@@ -46,6 +46,7 @@ func _input(event):
 		if event.position.x < get_viewport().size.x * 0.5:
 			# The left side of the screen was touched
 			velocity.y = -flap_strength
+			play_bell_sound()
 		else:
 			# The right side of the screen was touched
 			drop_gift()

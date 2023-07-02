@@ -53,6 +53,8 @@ common/drop_mouse_on_gui_input_disabled=true
 2d_physics/layer_3="Gifts"
 2d_physics/layer_4="Houses"
 2d_physics/layer_5="Barriers"
+2d_physics/layer_6="Ground"
+2d_physics/layer_7="GroundTrigger"
 
 [physics]
 
