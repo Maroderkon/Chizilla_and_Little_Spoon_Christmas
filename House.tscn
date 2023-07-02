@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://House.gd" type="Script" id=1]
 [ext_resource path="res://Aseprite/HousePlaceHolder.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 132, 104 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 52, 72 )
 
 [node name="House" type="Area2D"]
 collision_layer = 8
@@ -19,3 +22,13 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -4, 0 )
 shape = SubResource( 1 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( 12, 8 )
+shape = SubResource( 2 )

@@ -18,3 +18,9 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 730, 11 )
 shape = SubResource( 1 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+
+[node name="DeleteTimer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true

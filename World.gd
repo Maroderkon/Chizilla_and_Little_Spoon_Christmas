@@ -16,6 +16,8 @@ onready var highscore := $CanvasLayer/MarginContainer/HighScore
 func _ready() -> void:
 	player.connect("player_dead", self, "add_menu_screen")
 
+func _process(delta: float) -> void:
+	pass
 
 func add_menu_screen() -> void:
 	var main := canvas

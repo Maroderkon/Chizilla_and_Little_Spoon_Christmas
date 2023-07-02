@@ -25,7 +25,6 @@ func spawn_obstacle():
 	var house = obstacle.instance()
 	
 	# Connect the house signal to the World node method immediately after instantiation
-	
 	house.connect("score_up", main, "score_up")
 	
 	
