@@ -1,6 +1,7 @@
 extends Node2D
 
 
+
 onready var player := $Player
 onready var canvas := $CanvasLayer
 onready var obstacle_spawner := $ObstacleSpawner
