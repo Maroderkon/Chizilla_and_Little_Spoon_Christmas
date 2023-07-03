@@ -9,6 +9,7 @@ signal player_dead
 onready var hitbox_area := $Hitbox
 onready var cooldown_timer := $CoolDownTimer
 onready var bell_sound := $BellSound
+onready var gift_drop_sound := $GiftDropSound
 
 var velocity: Vector2 = Vector2.ZERO
 var Gift := preload("res://Gift.tscn")
@@ -59,6 +60,7 @@ func drop_gift() -> void:
 		gift.global_position = global_position + Vector2(0, 100) 
 		cooldown_over = false
 		cooldown_timer.start(1)
+		gift_drop_sound.play()
 
 func hitbox_area_entered(area: Area2D) -> void:
 	player_died()

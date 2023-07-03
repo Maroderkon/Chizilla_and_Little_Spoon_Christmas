@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Talking Cute.wav-842722098ab19a0d2334c673188db6ed.sample"
+path="res://.import/slime_jump.wav-ff57639345907b6f9bd081fe25ef4eb1.sample"
 
 [deps]
 
-source_file="res://Sounds/Talking Cute.wav"
-dest_files=[ "res://.import/Talking Cute.wav-842722098ab19a0d2334c673188db6ed.sample" ]
+source_file="res://Sounds/slime_jump.wav"
+dest_files=[ "res://.import/slime_jump.wav-ff57639345907b6f9bd081fe25ef4eb1.sample" ]
 
 [params]
 
@@ -17,7 +17,7 @@ force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=2
+edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
 compress/mode=0

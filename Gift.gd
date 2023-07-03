@@ -16,5 +16,6 @@ func _process(delta: float) -> void:
 
 
 func on_visibility_enabler_screen_exited() -> void:
-	print("Gift about to queue free")
 	queue_free()
+
+

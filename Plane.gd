@@ -18,5 +18,4 @@ func _process(delta: float) -> void:
 	global_position.x -= speed * delta
 	
 func on_visibility_enabler_screen_exited() -> void:
-	print("Bird about to queue free")
 	queue_free()
