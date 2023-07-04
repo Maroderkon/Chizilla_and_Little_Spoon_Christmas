@@ -15,6 +15,7 @@ var velocity: Vector2 = Vector2.ZERO
 var Gift := preload("res://Gift.tscn")
 var game_started := false
 var cooldown_over := true
+var crashed := false
 
 
 func _ready() -> void:
@@ -22,25 +23,28 @@ func _ready() -> void:
 	cooldown_timer.connect("timeout", self, "on_cooldown_timer_timeout")
 
 func _physics_process(delta: float) -> void:
-	
-	# Apply gravity to the bird's vertical velocity
-	velocity.y += gravity * delta
-	
-	# Limit the falling speed
-	#velocity.y = min(velocity.y, max_fall_speed)
-	
-	# Check if the player has pressed the flap button
-	if Input.is_action_just_pressed("ui_up"):
-		# Apply a negative velocity to make the bird move upwards
-		velocity.y = -flap_strength
-		play_bell_sound()
-	
-	# Check if the player is dropping a gift
-	if Input.is_action_just_pressed("ui_down"):
-		drop_gift()
-	
-	# Move the bird
-	move_and_slide(velocity, Vector2.UP)
+	if crashed == false:
+		# Apply gravity to the bird's vertical velocity
+		velocity.y += gravity * delta
+		
+		# Limit the falling speed
+		#velocity.y = min(velocity.y, max_fall_speed)
+		
+		# Check if the player has pressed the flap button
+		if Input.is_action_just_pressed("ui_up"):
+			# Apply a negative velocity to make the bird move upwards
+			velocity.y = -flap_strength
+			play_bell_sound()
+		
+		# Check if the player is dropping a gift
+		if Input.is_action_just_pressed("ui_down"):
+			drop_gift()
+		
+		# Move the bird
+		move_and_slide(velocity, Vector2.UP)
+	else:
+		velocity.y = 300
+		move_and_slide(velocity, Vector2.UP)
 
 func _input(event):
 	if event is InputEventScreenTouch and event.pressed:
@@ -63,11 +67,13 @@ func drop_gift() -> void:
 		gift_drop_sound.play()
 
 func hitbox_area_entered(area: Area2D) -> void:
+	area.position.y += 100
 	player_died()
 	
 func player_died() -> void:
 	emit_signal("player_dead")
-	queue_free()
+	crashed = true
+	#queue_free()
 
 func game_start():
 	game_started = true

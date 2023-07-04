@@ -24,10 +24,9 @@ func spawn_obstacle():
 	var main = get_tree().current_scene
 	var house = obstacle.instance()
 	
+	
 	# Connect the house signal to the World node method immediately after instantiation
 	house.connect("score_up", main, "score_up")
-	
-	
 	
 	# Adding the house to the main node after connecting the signal
 	main.add_child(house)

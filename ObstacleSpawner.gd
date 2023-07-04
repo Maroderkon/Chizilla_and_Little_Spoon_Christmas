@@ -5,7 +5,7 @@ onready var spawn_timer := $Timer
 onready var difficutly_timer := $DifficultyTimer
 
 var obstacle := preload("res://Plane.tscn")
-var difficulty_spawn_rate := 2.0
+var difficulty_spawn_rate := 2.0 #2.0
 
 func _ready() -> void:
 	randomize()
