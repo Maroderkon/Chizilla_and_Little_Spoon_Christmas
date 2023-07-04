@@ -22,7 +22,7 @@ func spawn_obstacle():
 	var spawn_position: Vector2 = get_spawn_position()
 	var main = get_tree().current_scene
 	var ground = obstacle.instance()
-	ground.z_index = 1
+	#ground.z_index = 1
 	
 	# Connect the signal
 	ground.connect("spawn_ground", self, "signal_test")

@@ -67,8 +67,10 @@ func drop_gift() -> void:
 		gift_drop_sound.play()
 
 func hitbox_area_entered(area: Area2D) -> void:
-	area.position.y += 100
-	player_died()
+	if crashed == false:
+		crashed = true
+		area.position.y += 100
+		player_died()
 	
 func player_died() -> void:
 	emit_signal("player_dead")
