@@ -10,6 +10,8 @@ onready var hitbox_area := $Hitbox
 onready var cooldown_timer := $CoolDownTimer
 onready var bell_sound := $BellSound
 onready var gift_drop_sound := $GiftDropSound
+onready var animated_sprite := $AnimatedSprite
+onready var crash_sprite := $CrashSprite
 
 var velocity: Vector2 = Vector2.ZERO
 var Gift := preload("res://Gift.tscn")
@@ -45,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 300
 		move_and_slide(velocity, Vector2.UP)
+		animated_sprite.visible = false
+		crash_sprite.visible = true
 
 func _input(event):
 	if event is InputEventScreenTouch and event.pressed:
