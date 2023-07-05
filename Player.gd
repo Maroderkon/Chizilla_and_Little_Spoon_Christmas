@@ -12,6 +12,7 @@ onready var bell_sound := $BellSound
 onready var gift_drop_sound := $GiftDropSound
 onready var animated_sprite := $AnimatedSprite
 onready var crash_sprite := $CrashSprite
+onready var visibility_enabler := $VisibilityNotifier2D
 
 var velocity: Vector2 = Vector2.ZERO
 var Gift := preload("res://Gift.tscn")
@@ -23,6 +24,7 @@ var crashed := false
 func _ready() -> void:
 	hitbox_area.connect("area_entered", self, "hitbox_area_entered")
 	cooldown_timer.connect("timeout", self, "on_cooldown_timer_timeout")
+	visibility_enabler.connect("screen_exited", self, "on_visibility_enabler_screen_exited")
 
 func _physics_process(delta: float) -> void:
 	if crashed == false:
@@ -51,6 +53,8 @@ func _physics_process(delta: float) -> void:
 		crash_sprite.visible = true
 
 func _input(event):
+	if crashed == true:
+		return
 	if event is InputEventScreenTouch and event.pressed:
 		if event.position.x < get_viewport().size.x * 0.5:
 			# The left side of the screen was touched
@@ -77,7 +81,7 @@ func hitbox_area_entered(area: Area2D) -> void:
 		player_died()
 	
 func player_died() -> void:
-	emit_signal("player_dead")
+#	emit_signal("player_dead")
 	crashed = true
 	#queue_free()
 
@@ -90,6 +94,9 @@ func on_cooldown_timer_timeout() -> void:
 func play_bell_sound() -> void:
 	bell_sound.stop()
 	bell_sound.play(0.0) # Play the sound but stop it at 2 seconds
+
+func on_visibility_enabler_screen_exited():
+	emit_signal("player_dead")
 
 #extends KinematicBody2D
 #

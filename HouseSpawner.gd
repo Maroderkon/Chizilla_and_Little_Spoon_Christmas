@@ -3,6 +3,7 @@ extends Node2D
 onready var spawn_points := $SpawnPoints
 onready var spawn_timer := $Timer
 
+
 var obstacle := preload("res://House.tscn")
 
 func _ready() -> void:
@@ -34,7 +35,7 @@ func spawn_obstacle():
 	
 func on_spawn_timer_timeout():
 	spawn_obstacle()
-	
+	spawn_timer.start(rand_range(5.0, 8.0))	
 
 func game_start():
 	spawn_timer.start(7)
