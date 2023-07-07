@@ -61,4 +61,4 @@ position = Vector2( 0, 1256 )
 position = Vector2( 376, 1288 )
 
 [node name="InvisibleWall" parent="." instance=ExtResource( 11 )]
-position = Vector2( 0, -4 )
+position = Vector2( 0, -60 )

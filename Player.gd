@@ -13,6 +13,7 @@ onready var gift_drop_sound := $GiftDropSound
 onready var animated_sprite := $AnimatedSprite
 onready var crash_sprite := $CrashSprite
 onready var visibility_enabler := $VisibilityNotifier2D
+onready var animation_player := $AnimationPlayer
 
 var velocity: Vector2 = Vector2.ZERO
 var Gift := preload("res://Gift.tscn")
@@ -25,6 +26,8 @@ func _ready() -> void:
 	hitbox_area.connect("area_entered", self, "hitbox_area_entered")
 	cooldown_timer.connect("timeout", self, "on_cooldown_timer_timeout")
 	visibility_enabler.connect("screen_exited", self, "on_visibility_enabler_screen_exited")
+	animation_player.stop()
+	z_index = 1
 
 func _physics_process(delta: float) -> void:
 	if crashed == false:
@@ -34,15 +37,22 @@ func _physics_process(delta: float) -> void:
 		# Limit the falling speed
 		#velocity.y = min(velocity.y, max_fall_speed)
 		
+		
 		# Check if the player has pressed the flap button
 		if Input.is_action_just_pressed("ui_up"):
 			# Apply a negative velocity to make the bird move upwards
 			velocity.y = -flap_strength
 			play_bell_sound()
+			
 		
 		# Check if the player is dropping a gift
 		if Input.is_action_just_pressed("ui_down"):
 			drop_gift()
+		
+		if velocity.y >= 0:
+			animated_sprite.frame = 0
+		else:
+			animated_sprite.frame = 1
 		
 		# Move the bird
 		move_and_slide(velocity, Vector2.UP)
