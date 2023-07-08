@@ -32,6 +32,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if game_started == false and Input.is_action_just_pressed("ui_up"):
 		jump()
+	elif Input.is_action_just_pressed("ui_down"):
+			drop_gift()
+			return
 	elif game_started == false:	
 		return
 		
