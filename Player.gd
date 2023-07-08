@@ -5,6 +5,7 @@ export var flap_strength: float = 600.0
 export var max_fall_speed: float = 2000.0
 
 signal player_dead
+signal start_game
 
 onready var hitbox_area := $Hitbox
 onready var cooldown_timer := $CoolDownTimer
@@ -26,10 +27,14 @@ func _ready() -> void:
 	hitbox_area.connect("area_entered", self, "hitbox_area_entered")
 	cooldown_timer.connect("timeout", self, "on_cooldown_timer_timeout")
 	visibility_enabler.connect("screen_exited", self, "on_visibility_enabler_screen_exited")
-	animation_player.stop()
 	z_index = 1
 
 func _physics_process(delta: float) -> void:
+	if game_started == false and Input.is_action_just_pressed("ui_up"):
+		jump()
+	elif game_started == false:	
+		return
+		
 	if crashed == false:
 		# Apply gravity to the bird's vertical velocity
 		velocity.y += gravity * delta
@@ -41,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		# Check if the player has pressed the flap button
 		if Input.is_action_just_pressed("ui_up"):
 			# Apply a negative velocity to make the bird move upwards
-			velocity.y = -flap_strength
+			jump()
 			play_bell_sound()
 			
 		
@@ -49,10 +54,10 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_down"):
 			drop_gift()
 		
-		if velocity.y >= 0:
-			animated_sprite.frame = 0
-		else:
-			animated_sprite.frame = 1
+#		if velocity.y >= 0:
+#			animated_sprite.frame = 0
+#		else:
+#			animated_sprite.frame = 1
 		
 		# Move the bird
 		move_and_slide(velocity, Vector2.UP)
@@ -68,7 +73,7 @@ func _input(event):
 	if event is InputEventScreenTouch and event.pressed:
 		if event.position.x < get_viewport().size.x * 0.5:
 			# The left side of the screen was touched
-			velocity.y = -flap_strength
+			jump()
 			play_bell_sound()
 		else:
 			# The right side of the screen was touched
@@ -89,7 +94,13 @@ func hitbox_area_entered(area: Area2D) -> void:
 		crashed = true
 		area.position.y += 100
 		player_died()
-	
+
+func jump() -> void:
+	velocity.y = -flap_strength
+	if game_started == false:
+		game_started = true
+		emit_signal("start_game")
+
 func player_died() -> void:
 #	emit_signal("player_dead")
 	crashed = true

@@ -9,7 +9,7 @@ var obstacle := preload("res://House.tscn")
 func _ready() -> void:
 	randomize()
 	spawn_timer.connect("timeout", self, "on_spawn_timer_timeout")
-	spawn_timer.start(7)
+#	spawn_timer.start(7)
 	
 
 func _process(delta: float) -> void:
@@ -37,7 +37,7 @@ func on_spawn_timer_timeout():
 	spawn_obstacle()
 	spawn_timer.start(rand_range(5.0, 8.0))	
 
-func game_start():
+func game_started():
 	spawn_timer.start(7)
 
 #extends Node2D

@@ -25,10 +25,8 @@ position = Vector2( 0, 832 )
 [node name="Position2D6" type="Position2D" parent="SpawnPoints"]
 position = Vector2( 0, 1024 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 3.0
-autostart = true
 
 [node name="DifficultyTimer" type="Timer" parent="."]
 wait_time = 10.0
-autostart = true

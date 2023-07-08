@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var spawn_points := $SpawnPoints
-onready var spawn_timer := $Timer
+onready var spawn_timer := $SpawnTimer
 onready var difficutly_timer := $DifficultyTimer
 
 var obstacle := preload("res://Plane.tscn")
@@ -10,7 +10,7 @@ var difficulty_spawn_rate := 2.0 #2.0
 func _ready() -> void:
 	randomize()
 	spawn_timer.connect("timeout", self, "on_spawn_timer_timeout")
-	spawn_timer.start(difficulty_spawn_rate)
+#	spawn_timer.start(difficulty_spawn_rate)
 	difficutly_timer.connect("timeout", self, "on_difficulty_timer_timeout")
 
 
@@ -44,5 +44,7 @@ func on_difficulty_timer_timeout() -> void:
 func on_spawn_timer_timeout():
 	spawn_obstacle()
 	
-func game_start():
-	spawn_timer.start(2)
+func game_started():
+	spawn_timer.start(difficulty_spawn_rate)
+	difficutly_timer.start(10.0)
+#	spawn_timer.start(2)

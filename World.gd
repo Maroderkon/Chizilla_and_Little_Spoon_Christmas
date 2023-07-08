@@ -9,6 +9,7 @@ onready var house_spawner := $HouseSpawner
 onready var ground := $Ground
 onready var ground_spawner := $GroundSpawner
 
+
 var Menu := preload("res://Menu.tscn")
 var score := 0
 
@@ -18,7 +19,10 @@ onready var highscore := $CanvasLayer/MarginContainer/HighScore
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player.connect("player_dead", self, "add_menu_screen")
+	player.connect("start_game", house_spawner, "game_started")
+	player.connect("start_game", obstacle_spawner, "game_started")
 	ground.connect("spawn_ground", ground_spawner, "signal_test")
+	
 func _process(delta: float) -> void:
 	pass
 
