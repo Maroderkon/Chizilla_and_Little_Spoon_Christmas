@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Aseprite/BackgroundPlaceHolder.png" type="Texture" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://GroundSpawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Barrier.tscn" type="PackedScene" id=10]
 [ext_resource path="res://InvisibleWall.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Aseprite/Tutorial.png" type="Texture" id=12]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 5 )
@@ -62,3 +63,7 @@ position = Vector2( 376, 1288 )
 
 [node name="InvisibleWall" parent="." instance=ExtResource( 11 )]
 position = Vector2( 0, -60 )
+
+[node name="Tutorial" type="Sprite" parent="."]
+texture = ExtResource( 12 )
+centered = false

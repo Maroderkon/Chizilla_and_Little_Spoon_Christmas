@@ -9,7 +9,7 @@ onready var hurt_bird_sprite := $HurtBird
 onready var animation_player := $animation_player
 onready var bird_animation := $BirdAnimation
 
-var speed := rand_range(450.0, 700.0) #250 and 500
+var speed := rand_range(350.0, 500.0) #450 and 700 #250 and 500
 var hurt := false
 
 

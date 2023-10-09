@@ -29,4 +29,4 @@ position = Vector2( 0, 1024 )
 wait_time = 3.0
 
 [node name="DifficultyTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 60.0

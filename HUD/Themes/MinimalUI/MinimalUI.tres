@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=51 format=2]
+[gd_resource type="Theme" load_steps=52 format=2]
 
-[ext_resource path="res://MinimalUI/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://HUD/Themes/MinimalUI/OpenSans-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://HUD/Themes/MinimalUI/icons.svg" type="Texture" id=2]
 
 [sub_resource type="DynamicFont" id=21]
 font_data = ExtResource( 1 )
@@ -36,29 +37,45 @@ border_width_bottom = 1
 border_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 37, 111, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 85, 111, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 61, 111, 18, 18 )
 
 [sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 13, 111, 18, 18 )
 
 [sub_resource type="StyleBoxEmpty" id=26]
 
 [sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 13, 79, 34, 19 )
 
 [sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 93, 79, 34, 19 )
 
 [sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 53, 79, 34, 19 )
 
 [sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 133, 79, 34, 19 )
 
 [sub_resource type="StyleBoxEmpty" id=49]
@@ -106,12 +123,18 @@ border_color = Color( 0.282353, 0.282353, 0.282353, 1 )
 color = Color( 0.282353, 0.282353, 0.282353, 1 )
 
 [sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 80, 10, 12, 28 )
 
 [sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 112, 10, 12, 28 )
 
 [sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 144, 10, 12, 28 )
 
 [sub_resource type="StyleBoxFlat" id=12]
@@ -279,12 +302,18 @@ color = Color( 0.282353, 0.282353, 0.282353, 1 )
 vertical = true
 
 [sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 74, 52, 24, 10 )
 
 [sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 106, 52, 24, 8 )
 
 [sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 2 )
 region = Rect2( 138, 52, 24, 8 )
 
 [sub_resource type="StyleBoxFlat" id=18]
