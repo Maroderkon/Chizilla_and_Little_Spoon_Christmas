@@ -35,10 +35,11 @@ func spawn_obstacle():
 	
 func on_spawn_timer_timeout():
 	spawn_obstacle()
+	spawn_timer.stop()
 	spawn_timer.start(rand_range(5.0, 8.0))	
 
 func game_started():
-	spawn_timer.start(7)
+	spawn_timer.start(rand_range(1.0, 3.0))
 
 #extends Node2D
 #
